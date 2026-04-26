@@ -1,0 +1,5 @@
+mode: atomic
+myapp/cmd/main.go:13.13,23.61 8 0
+myapp/cmd/main.go:23.61,26.6 2 0
+myapp/internal/handler/handler.go:21.53,25.2 3 1
+myapp/internal/handler/handler.go:27.52,31.2 3 1
