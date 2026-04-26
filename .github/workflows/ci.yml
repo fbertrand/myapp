@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 env:
-  GO_VERSION: "1.22"
+  GO_VERSION: "1.26"
   IMAGE: ghcr.io/${{ github.repository_owner }}/myapp
 
 jobs:
@@ -22,13 +22,13 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: ${{ env.GO_VERSION }}
-          cache: true               # cache du module go automatique
+          cache: true # cache du module go automatique
 
       - name: Vet
         run: go vet ./...
 
       - name: Tests
-        run: go test -race -coverprofile=coverage.out ./...
+        run: go test -race -coverprofile=coverage.out ./internal/...
 
       - name: Coverage summary
         run: go tool cover -func=coverage.out
@@ -48,7 +48,7 @@ jobs:
 
     permissions:
       contents: read
-      packages: write           # pour pousser sur ghcr.io
+      packages: write # pour pousser sur ghcr.io
 
     steps:
       - uses: actions/checkout@v4
@@ -58,7 +58,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}  # token automatique, pas de secret à configurer
+          password: ${{ secrets.GITHUB_TOKEN }} # token automatique, pas de secret à configurer
 
       - name: Docker metadata
         id: meta
@@ -75,5 +75,5 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha     # cache layer Docker dans GitHub Actions
+          cache-from: type=gha # cache layer Docker dans GitHub Actions
           cache-to: type=gha,mode=max
