@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 env:
-  GO_VERSION: "1.26"
+  GO_VERSION: "1.24"
   IMAGE: ghcr.io/${{ github.repository_owner }}/myapp
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOTOOLCHAIN: local
-      GO_VERSION: "1.26"
+      GO_VERSION: "1.24"
 
     steps:
       - uses: actions/checkout@v4
