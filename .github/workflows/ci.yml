@@ -35,6 +35,7 @@ jobs:
 
       - name: Upload coverage
         uses: actions/upload-artifact@v4
+        if: ${{ !env.ACT }} # ← ajouter cette ligne
         with:
           name: coverage
           path: coverage.out
