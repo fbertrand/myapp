@@ -13,8 +13,7 @@ test:
 	go tool cover -func=coverage.out
 
 lint:
-	go vet ./...
-	staticcheck ./...   # go install honnef.co/go/tools/cmd/staticcheck@latest
+	golangci-lint run ./...
 
 docker-build:
 	docker build -t $(IMAGE):$(VERSION) .

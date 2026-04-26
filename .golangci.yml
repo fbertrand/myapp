@@ -1,0 +1,21 @@
+# .golangci.yml
+linters:
+  enable:
+    - staticcheck      # analyse statique avancée
+    - errcheck         # vérifie que les erreurs sont bien gérées
+    - gosimple         # simplifications possibles du code
+    - unused           # variables/fonctions non utilisées
+    - govet            # remplace go vet
+    - misspell         # fautes d'orthographe dans les commentaires
+    - gofmt            # formatage du code
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true   # vérifie les assertions de type non vérifiées
+
+issues:
+  max-issues-per-linter: 10
+  max-same-issues: 3
+
+run:
+  timeout: 5m
